@@ -1,0 +1,90 @@
+{% extends 'product/layout/appheader.html' %}
+
+{% load static %}
+{% block part1 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Details Product </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+     .carousel-inner img {
+        width: 100%;
+        height: 100%;
+     }
+     </style>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<body>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'product/images/aws2.png' %}" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>AWS</h3>
+        <p> Amazon Web serves </p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'product/images/cover-devops.png' %}" alt="Chicago" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3> DevOps Engineer </h3>
+        <p> Kubernetes Certifcation (CKA, CKAD, CKS)</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'product/images/cover-azure.jpg' %}" alt="New York" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>Microsoft Azure</h3>
+        <p>Microsoft Cloud</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+
+
+
+
+
+
+
+ {% for products in productdetials %}
+        <div class="card" style="width: 22rem; margin: 10px; display: inline-block">
+          <img src= "{% static 'product/images/'|add:products.image  %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title"> {{products.name}} </h4>
+            <h5 class="exam cost"> ${{products.cost}} USD </h5>
+            <p class="card-text"> {{products.details}} </p>
+            <a href="/product/{{products.id}}" class="btn btn-primary">Get More Details</a>
+          </div>
+        </div>
+
+ {% endfor %}
+
+{% endblock %}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>
+

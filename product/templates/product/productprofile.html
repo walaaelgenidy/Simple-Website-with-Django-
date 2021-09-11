@@ -1,0 +1,129 @@
+{% extends 'product/layout/appheader.html' %}
+
+{% load static %}
+{% block part1 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title> Profile Product </title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<body>
+    <h1> Proudct Details </h1>
+
+    <div class="card" style="width: 22rem; margin: 10px; display: inline-block">
+        <img src= "{% static 'product/images/'|add:product.image  %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title"> {{product.name}} </h4>
+            <h5 class="exam cost"> {{product.cost}} </h5>
+            <p class="card-text"> {{product.details}} </p>
+        </div>
+    </div>
+
+
+<!--    {% if product.gender == 'm' %}-->
+<!--    <h1>-->
+<!--        Gender: Male-->
+<!--    </h1>-->
+<!--    {% else %}-->
+<!--    <h1>-->
+<!--        Gender: Female-->
+<!--    </h1>-->
+<!--    {% endif %}-->
+
+
+<!--    <h1> Department: {{product.dept}} </h1>-->
+<!--    <h1> Email: {{product.Email}} </h1>-->
+
+
+    <div class="container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th> <h3> Gender </h3> </th>
+            <th> <h3> Department </h3> </th>
+            <th> <h3> Email </h3> </th>
+            <th> <h3> Create At </h3> </th>
+            <th> <h3> Updated At </h3> </th>
+            <th> <h3> Masters </h3> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {% if product.gender == 'm' %}
+
+                  <h5> Male </h5>
+
+              {% else %}
+
+                 <h5>  Female </h5>
+
+              {% endif %}
+            </td>
+
+            <td> <h5> {{product.dept.name}} {{product.dept.id}} </h5> </td>
+            <td> <h5> {{product.Email}} </h5> </td>
+            <td> <h5> {{product.Created_at}} </h5> </td>
+            <td> <h5> {{product.Updated_at}} </h5> </td>
+            <td> <h5> {{product.masters}} </h5> </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+<!--    <h1> Create at: {{product.Created_at}} </h1>-->
+<!--    <h1> Updated at: {{product.Updated_at}} </h1>-->
+<!--    <h1> Masters: {{product.masters}} </h1>-->
+<!--    <pre>-->
+<!--        Other Course in this Category-->
+<!--        {% for prd in product.dept.product_set.all %}-->
+
+<!--            {{prd}}-->
+
+<!--        {% endfor %}-->
+<!--    </pre>-->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+              <h4> Other Course in this Category </h4>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+              {% for prd in product.dept.product_set.all %}
+                <li>
+                    <h7>
+                        {{prd}}
+                    </h7>
+
+                </li>
+
+              {% endfor %}
+
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>
+

@@ -1,0 +1,61 @@
+{% extends 'product/layout/appheader.html' %}
+
+{% load static %}
+{% block part1 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<h1>  Add course  </h1>-->
+
+    <div class="container">
+        <h1> Add Course </h1>
+        <form action="" method="post" class="form-group">
+            {% csrf_token %}
+            <div class="form-group">
+                Name: <input type="text" name="name">
+            </div>
+            <div class="form-group">
+
+                Email: <input type="text" name="email">
+            </div>
+
+            <div class="form-group">
+                Image: <input type="text" name="image">
+                </div>
+            <div class="form-group">
+                Cost: <input type="number" name="cost">
+                </div>
+            <div class="form-group">
+                Details: <input type="text" name="details">
+                </div>
+
+            <div class="form-group">
+                Gender:
+                <input type="radio" name="gender" value="m"> Male
+                <input type="radio" name="gender" value="f"> Female
+            </div>
+
+            <div class="form-group">
+                Department:
+                <select name="dept">
+                    {% for dept in department %}
+                        <option  value="{{dept.id}}">  {{dept.name}} </option>
+                    {% endfor %}
+                </select>
+
+                </div>
+
+            <input type="submit">
+        </form>
+    </div>
+
+{% endblock %}
+
+</body>
+</html>
